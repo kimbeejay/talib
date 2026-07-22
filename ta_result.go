@@ -1,6 +1,6 @@
 package talib
 
-type taResult int
+type taResult int32
 
 const (
 	SUCCESS                   taResult = 0 // No error

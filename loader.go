@@ -33,6 +33,16 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&ht_sine, ptr, "TA_HT_SINE")
 	purego.RegisterLibFunc(&ht_trendmode, ptr, "TA_HT_TRENDMODE")
 	purego.RegisterLibFunc(&add, ptr, "TA_ADD")
+	purego.RegisterLibFunc(&div, ptr, "TA_DIV")
+	purego.RegisterLibFunc(&max, ptr, "TA_MAX")
+	purego.RegisterLibFunc(&maxIndex, ptr, "TA_MAXINDEX")
+	purego.RegisterLibFunc(&min, ptr, "TA_MIN")
+	purego.RegisterLibFunc(&minIndex, ptr, "TA_MININDEX")
+	purego.RegisterLibFunc(&minMax, ptr, "TA_MINMAX")
+	purego.RegisterLibFunc(&minMaxIndex, ptr, "TA_MINMAXINDEX")
+	purego.RegisterLibFunc(&mult, ptr, "TA_MULT")
+	purego.RegisterLibFunc(&sub, ptr, "TA_SUB")
+	purego.RegisterLibFunc(&sum, ptr, "TA_SUM")
 
 	return ptr, nil
 }

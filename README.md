@@ -9,7 +9,17 @@ This project currently exposes a small subset of TA-Lib functions:
 - `HT_PHASOR`
 - `HT_SINE`
 - `HT_TRENDMODE`
-- `ADD`
+- `Add`
+- `Div`
+- `Max`
+- `MaxIndex`
+- `Min`
+- `MinIndex`
+- `MinMax`
+- `MinMaxIndex`
+- `Mult`
+- `Sub`
+- `Sum`
 
 ## Requirements
 
@@ -83,14 +93,18 @@ func main() {
 	period := talib.HT_DCPERIOD(series)
 	fmt.Println(period)
 
-	sum := talib.ADD(series, series)
+	sum := talib.Add(series, series)
 	fmt.Println(sum)
+
+	rollingMax := talib.Max(series, 14)
+	fmt.Println(rollingMax)
 }
 ```
 
 ## API notes
 
 - Indicator functions return `nil` when the underlying TA-Lib call fails.
+- Native TA-Lib functions are exposed with Go-style exported names such as `Add`, `Div`, `Max`, and `Sum`.
 
 ## Project status
 

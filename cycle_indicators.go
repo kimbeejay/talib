@@ -9,10 +9,10 @@ import (
 // Output is the estimated dominant cycle length in bars (clamped to 6-50).
 func HT_DCPERIOD(inReal []float64) []float64 {
 	var (
-		startIdx     = 0
-		endIdx       = len(inReal) - 1
-		outBegIdx    int
-		outNBElement int
+		startIdx     int32
+		endIdx       = int32(len(inReal) - 1)
+		outBegIdx    int32
+		outNBElement int32
 		outReal      = make([]float64, len(inReal))
 	)
 
@@ -29,10 +29,10 @@ func HT_DCPERIOD(inReal []float64) []float64 {
 // One real output per bar. Output is degrees, wrapped so it never exceeds 315 (can go negative).
 func HT_DCPHASE(inReal []float64) []float64 {
 	var (
-		startIdx     = 0
-		endIdx       = len(inReal) - 1
-		outBegIdx    int
-		outNBElement int
+		startIdx     int32
+		endIdx       = int32(len(inReal) - 1)
+		outBegIdx    int32
+		outNBElement int32
 		outReal      = make([]float64, len(inReal))
 	)
 
@@ -62,10 +62,10 @@ func HT_DCPHASE(inReal []float64) []float64 {
 // @return outQuadrature Quadrature component (Q1 of the Hilbert Transform)
 func HT_PHASOR(inReal []float64) ([]float64, []float64) {
 	var (
-		startIdx      = 0
-		endIdx        = len(inReal) - 1
-		outBegIdx     int
-		outNBElement  int
+		startIdx      int32
+		endIdx        = int32(len(inReal) - 1)
+		outBegIdx     int32
+		outNBElement  int32
 		outInPhase    = make([]float64, len(inReal))
 		outQuadrature = make([]float64, len(inReal))
 	)
@@ -94,10 +94,10 @@ func HT_PHASOR(inReal []float64) ([]float64, []float64) {
 // @return outLeadSine Sine of the phase advanced 45 degrees (lead)
 func HT_SINE(inReal []float64) ([]float64, []float64) {
 	var (
-		startIdx     = 0
-		endIdx       = len(inReal) - 1
-		outBegIdx    int
-		outNBElement int
+		startIdx     int32
+		endIdx       = int32(len(inReal) - 1)
+		outBegIdx    int32
+		outNBElement int32
 		outSine      = make([]float64, len(inReal))
 		outLeadSine  = make([]float64, len(inReal))
 	)
@@ -118,16 +118,17 @@ func HT_SINE(inReal []float64) ([]float64, []float64) {
 	return outSine, outLeadSine
 }
 
-// HT_TRENDMODE - Hilbert Transform classifier that labels each bar as trending (1) or cycling (0). Reuses the MAMA dominant-cycle/phase DSP plus a SineWave/trendline test to decide the market mode. 1 = trending market (favor trend-following); 0 = cycle/mean-reverting mode.
+// HT_TRENDMODE - Hilbert Transform classifier that labels each bar as trending (1) or cycling (0).
+// Reuses the MAMA dominant-cycle/phase DSP plus a SineWave/trendline test to decide the market mode.
 // @param inReal Input price series
-// @return outInteger 1 = trending market; 0 = cycle/mean-reverting market; 4294967297 (Fermat number) = error (e.g. insufficient data)
-func HT_TRENDMODE(inReal []float64) []int {
+// @return outInteger 1 = trending market; 0 = cycle/mean-reverting market;
+func HT_TRENDMODE(inReal []float64) []int32 {
 	var (
-		startIdx     = 0
-		endIdx       = len(inReal) - 1
-		outBegIdx    int
-		outNBElement int
-		outInteger   = make([]int, len(inReal))
+		startIdx     int32
+		endIdx       = int32(len(inReal) - 1)
+		outBegIdx    int32
+		outNBElement int32
+		outInteger   = make([]int32, len(inReal))
 	)
 
 	if retCode := ht_trendmode(
