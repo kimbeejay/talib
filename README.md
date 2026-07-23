@@ -4,22 +4,24 @@ Go wrapper for selected [TA-Lib](https://ta-lib.org/) functions using [`purego`]
 
 This project currently exposes a small subset of TA-Lib functions:
 
+**Cycle Indicators (Hilbert Transform)**
 - `HT_DCPERIOD`
 - `HT_DCPHASE`
 - `HT_PHASOR`
 - `HT_SINE`
 - `HT_TRENDMODE`
-- `Add`
-- `Div`
-- `Max`
-- `MaxIndex`
-- `Min`
-- `MinIndex`
-- `MinMax`
-- `MinMaxIndex`
-- `Mult`
-- `Sub`
+
+**Math Operators**
+- `Add`, `Sub`, `Mult`, `Div`
+- `Max`, `MaxIndex`, `Min`, `MinIndex`
+- `MinMax`, `MinMaxIndex`
 - `Sum`
+
+**Math Transforms**
+- Trigonometric: `Cos`, `Sin`, `Tan`, `ACos`, `ASin`, `ATan`
+- Hyperbolic: `CosH`, `SinH`, `TanH`
+- Exponential/Logarithmic: `Exp`, `Ln`, `Log10`
+- Rounding: `Ceil`, `Floor`, `Sqrt`
 
 ## Requirements
 

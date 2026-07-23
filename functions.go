@@ -163,4 +163,139 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	cos func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	acos func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	cosh func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sin func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	asin func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sinh func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	tan func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	atan func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	tanh func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	ceil func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	exp func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	floor func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sqrt func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	ln func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	log10 func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )

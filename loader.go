@@ -32,6 +32,7 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&ht_phasor, ptr, "TA_HT_PHASOR")
 	purego.RegisterLibFunc(&ht_sine, ptr, "TA_HT_SINE")
 	purego.RegisterLibFunc(&ht_trendmode, ptr, "TA_HT_TRENDMODE")
+
 	purego.RegisterLibFunc(&add, ptr, "TA_ADD")
 	purego.RegisterLibFunc(&div, ptr, "TA_DIV")
 	purego.RegisterLibFunc(&max, ptr, "TA_MAX")
@@ -43,6 +44,24 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&mult, ptr, "TA_MULT")
 	purego.RegisterLibFunc(&sub, ptr, "TA_SUB")
 	purego.RegisterLibFunc(&sum, ptr, "TA_SUM")
+
+	purego.RegisterLibFunc(&cos, ptr, "TA_COS")
+	purego.RegisterLibFunc(&acos, ptr, "TA_ACOS")
+	purego.RegisterLibFunc(&cosh, ptr, "TA_COSH")
+	purego.RegisterLibFunc(&sin, ptr, "TA_SIN")
+	purego.RegisterLibFunc(&asin, ptr, "TA_ASIN")
+	purego.RegisterLibFunc(&sinh, ptr, "TA_SINH")
+	purego.RegisterLibFunc(&tan, ptr, "TA_TAN")
+	purego.RegisterLibFunc(&atan, ptr, "TA_ATAN")
+	purego.RegisterLibFunc(&tanh, ptr, "TA_TANH")
+
+	purego.RegisterLibFunc(&ceil, ptr, "TA_CEIL")
+	purego.RegisterLibFunc(&exp, ptr, "TA_EXP")
+	purego.RegisterLibFunc(&floor, ptr, "TA_FLOOR")
+	purego.RegisterLibFunc(&sqrt, ptr, "TA_SQRT")
+
+	purego.RegisterLibFunc(&ln, ptr, "TA_LN")
+	purego.RegisterLibFunc(&log10, ptr, "TA_LOG10")
 
 	return ptr, nil
 }
