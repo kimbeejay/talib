@@ -23,6 +23,13 @@ This project currently exposes a small subset of TA-Lib functions:
 - Exponential/Logarithmic: `Exp`, `Ln`, `Log10`
 - Rounding: `Ceil`, `Floor`, `Sqrt`
 
+**Momentum Indicators**
+- Directional Movement: `ADX`, `ADXR`, `DX`, `MINUS_DI`, `MINUS_DM`, `PLUS_DI`, `PLUS_DM`
+- Oscillators: `APO`, `AROON`, `AROONOSC`, `BOP`, `CCI`, `CMO`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `TRIX`, `WILLR`, `ULTOSC`
+- Rate of Change: `ROC`, `ROCP`, `ROCR`, `ROCR100`
+- MACD family: `MACD`, `MACDEXT`, `MACDFIX`
+- Stochastic family: `STOCH`, `STOCHF`, `STOCHRSI`
+
 ## Requirements
 
 - Go `1.26`
@@ -107,6 +114,8 @@ func main() {
 
 - Indicator functions return `nil` when the underlying TA-Lib call fails.
 - Native TA-Lib functions are exposed with Go-style exported names such as `Add`, `Div`, `Max`, and `Sum`.
+- Functions accepting a moving-average type use the `MAType` constant (`SMA`, `EMA`, `WMA`, `DEMA`, `TEMA`, `TRIMA`, `KAMA`, `MAMA`, `T3`).
+- Functions returning two outputs (e.g. `AROON`, `MACD`, `STOCH`) return multiple slices; all are `nil` on failure.
 
 ## Project status
 
