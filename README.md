@@ -2,7 +2,7 @@
 
 Go wrapper for selected [TA-Lib](https://ta-lib.org/) functions using [`purego`](https://github.com/ebitengine/purego) to dynamically load the native TA-Lib shared library at runtime.
 
-This project currently exposes a small subset of TA-Lib functions:
+This project currently exposes a focused subset of TA-Lib functions:
 
 **Cycle Indicators (Hilbert Transform)**
 - `HT_DCPERIOD`
@@ -24,11 +24,14 @@ This project currently exposes a small subset of TA-Lib functions:
 - Rounding: `Ceil`, `Floor`, `Sqrt`
 
 **Momentum Indicators**
-- Directional Movement: `ADX`, `ADXR`, `DX`, `MINUS_DI`, `MINUS_DM`, `PLUS_DI`, `PLUS_DM`
-- Oscillators: `APO`, `AROON`, `AROONOSC`, `BOP`, `CCI`, `CMO`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `TRIX`, `WILLR`, `ULTOSC`
+- Directional Movement: `ADX`, `ADXR`, `DX`, `MinusDI`, `MinusDM`, `PlusDI`, `PlusDM`
+- Oscillators: `APO`, `Aroon`, `AroonOsc`, `BOP`, `CCI`, `CMO`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `Trix`, `WillR`, `UltOsc`
 - Rate of Change: `ROC`, `ROCP`, `ROCR`, `ROCR100`
-- MACD family: `MACD`, `MACDEXT`, `MACDFIX`
-- Stochastic family: `STOCH`, `STOCHF`, `STOCHRSI`
+- MACD family: `MACD`, `MACDExt`, `MACDFix`
+- Stochastic family: `Stoch`, `StochF`, `StochRSI`
+
+**Overlap Studies**
+- `AccBands`, `BBands`, `DEMA`, `EMA`, `HT_TRENDLINE`, `KAMA`
 
 ## Requirements
 
@@ -114,8 +117,8 @@ func main() {
 
 - Indicator functions return `nil` when the underlying TA-Lib call fails.
 - Native TA-Lib functions are exposed with Go-style exported names such as `Add`, `Div`, `Max`, and `Sum`.
-- Functions accepting a moving-average type use the `MAType` constant (`SMA`, `EMA`, `WMA`, `DEMA`, `TEMA`, `TRIMA`, `KAMA`, `MAMA`, `T3`).
-- Functions returning two outputs (e.g. `AROON`, `MACD`, `STOCH`) return multiple slices; all are `nil` on failure.
+- Functions accepting a moving-average type use the `MAType` constant (`MA_SMA`, `MA_EMA`, `MA_WMA`, `MA_DEMA`, `MA_TEMA`, `MA_TRIMA`, `MA_KAMA`, `MA_MAMA`, `MA_T3`).
+- Functions returning multiple outputs (e.g. `Aroon`, `MACD`, `Stoch`) return multiple slices; all are `nil` on failure.
 
 ## Project status
 

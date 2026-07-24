@@ -107,14 +107,14 @@ func APO(inReal []float64, optInFastPeriod, optInSlowPeriod int, optInMAType MAT
 	return outReal
 }
 
-// AROON - Aroon reports how recently the highest high and lowest low occurred within a rolling window of length optInTimePeriod, as two 0-100 oscillators.
+// Aroon - Aroon reports how recently the highest high and lowest low occurred within a rolling window of length optInTimePeriod, as two 0-100 oscillators.
 // Indicates trend strength and direction. Up near 100 = a very recent new high (strong uptrend);
 // Down near 100 = a very recent new low. Up/Down crossovers signal trend shifts.
 //
 // Up = 100*(period-(today-highestIdx))/period
 // Down = 100*(period-(today-lowestIdx))/period
 // where highestIdx/lowestIdx index the highest high / lowest low over the window [today-period .. today].
-func AROON(inHigh, inLow []float64, optInTimePeriod int) ([]float64, []float64) {
+func Aroon(inHigh, inLow []float64, optInTimePeriod int) ([]float64, []float64) {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inHigh) - 1)
@@ -135,14 +135,14 @@ func AROON(inHigh, inLow []float64, optInTimePeriod int) ([]float64, []float64) 
 		outAroonUp,
 		outAroonDown,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("AROON", "result", retCode)
+		slog.Debug("Aroon", "result", retCode)
 		return nil, nil
 	}
 
 	return outAroonUp, outAroonDown
 }
 
-// AROONOSC - Aroon Oscillator: AroonUp minus AroonDown over a lookback window.
+// AroonOsc - Aroon Oscillator: AroonUp minus AroonDown over a lookback window.
 // Measures trend direction and strength on a -100..+100 scale.
 // Positive when the high is more recent than the low (up-trend); negative when the low is more recent (down-trend).
 //
@@ -151,7 +151,7 @@ func AROON(inHigh, inLow []float64, optInTimePeriod int) ([]float64, []float64) 
 // AroonDown = factor * (period - (today - lowestIdx))
 // AroonOsc = AroonUp - AroonDown = factor * (highestIdx - lowestIdx)
 // highestIdx/lowestIdx = bar index of the highest high / lowest low in the last (period+1) bars.
-func AROONOSC(inHigh, inLow []float64, optInTimePeriod int) []float64 {
+func AroonOsc(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inHigh) - 1)
@@ -170,7 +170,7 @@ func AROONOSC(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("AROONOSC", "result", retCode)
+		slog.Debug("AroonOsc", "result", retCode)
 		return nil
 	}
 
@@ -383,7 +383,7 @@ func MACD(inReal []float64, optInFastPeriod, optInSlowPeriod, optInSignalPeriod 
 	return outMACD, outMACDSignal, outMACDHist
 }
 
-// MACDEXT - MACD variant where the fast, slow, and signal moving averages each use a user-selectable MA type.
+// MACDExt - MACD variant where the fast, slow, and signal moving averages each use a user-selectable MA type.
 // Outputs the MACD line, its signal line, and their difference (histogram).
 // Hist sign change (MACD crossing its signal line) flags momentum shifts.
 //
@@ -394,7 +394,7 @@ func MACD(inReal []float64, optInFastPeriod, optInSlowPeriod, optInSignalPeriod 
 //
 // Note: If the slow period is set smaller than the fast period, the fast and slow periods and their MA types are swapped so the slow moving average is always the longer one.
 // A signal period of 1 disables signal-line smoothing for every signal MAType: the signal equals the MACD line and the histogram is zero.
-func MACDEXT(
+func MACDExt(
 	inReal []float64,
 	optInFastPeriod int, optInFastMAType MAType,
 	optInSlowPeriod int, optInSlowMAType MAType,
@@ -426,14 +426,14 @@ func MACDEXT(
 		outMACDSignal,
 		outMACDHist,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("MACDEXT", "result", retCode)
+		slog.Debug("MACDExt", "result", retCode)
 		return nil, nil, nil
 	}
 
 	return outMACD, outMACDSignal, outMACDHist
 }
 
-// MACDFIX - MACD with the fast/slow EMAs fixed to the classic 12/26 periods (with the classic fixed smoothing factors 0.15 and 0.075), exposing only the signal period.
+// MACDFix - MACD with the fast/slow EMAs fixed to the classic 12/26 periods (with the classic fixed smoothing factors 0.15 and 0.075), exposing only the signal period.
 // Signal-line crossovers and histogram sign flag momentum shifts.
 //
 // MACD = EMA_12 - EMA_26 (fixed k: 0.15 for 12, 0.075 for 26)
@@ -442,7 +442,7 @@ func MACDEXT(
 //
 // Note: A signal period of 1 disables signal-line smoothing: the signal equals the MACD line and the histogram is zero.
 // Before 0.6.5 this parameter value produced misaligned output (issues #48/#59).
-func MACDFIX(inReal []float64, optInSignalPeriod int) ([]float64, []float64, []float64) {
+func MACDFix(inReal []float64, optInSignalPeriod int) ([]float64, []float64, []float64) {
 	var (
 		startIdx      int32
 		endIdx        = int32(len(inReal) - 1)
@@ -464,7 +464,7 @@ func MACDFIX(inReal []float64, optInSignalPeriod int) ([]float64, []float64, []f
 		outMACDSignal,
 		outMACDHist,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("MACDFIX", "result", retCode)
+		slog.Debug("MACDFix", "result", retCode)
 		return nil, nil, nil
 	}
 
@@ -535,7 +535,7 @@ func MOM(inReal []float64, optInTimePeriod int) []float64 {
 	return outReal
 }
 
-// MINUS_DI - Wilder's Minus Directional Indicator: the Wilder-smoothed downward directional movement (-DM) normalized by smoothed True Range.
+// MinusDI - Wilder's Minus Directional Indicator: the Wilder-smoothed downward directional movement (-DM) normalized by smoothed True Range.
 // Measures the strength of downward price movement. Higher -DI indicates a stronger downtrend; compared against +DI to gauge directional dominance.
 //
 // -DM1 = (prevLow - low) if (prevLow-low)>0 and (high-prevHigh)<(prevLow-low), else 0.
@@ -544,7 +544,7 @@ func MOM(inReal []float64, optInTimePeriod int) []float64 {
 // If period<=1: -DI1 = -DM1/TR1 (no ×100).
 //
 // Note: Wilder's original integer rounding is not applied (it was removed as unreliable when values are near 1).
-func MINUS_DI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
+func MinusDI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inClose) - 1)
@@ -564,14 +564,14 @@ func MINUS_DI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("MINUS_DI", "result", retCode)
+		slog.Debug("MinusDI", "result", retCode)
 		return nil
 	}
 
 	return outReal
 }
 
-// MINUS_DM - Minus Directional Movement, the downward component of Wilder's directional movement system.
+// MinusDM - Minus Directional Movement, the downward component of Wilder's directional movement system.
 // Measures Wilder-smoothed downward price motion over the period. Higher -DM indicates stronger downward directional movement.
 //
 // diffP = high - prevHigh; diffM = prevLow - low
@@ -579,7 +579,7 @@ func MINUS_DI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 // period<=1: output raw -DM1 per bar.
 // period>1: seed = sum of first (period-1) -DM1; then Wilder smooth each bar:
 // -DM = prevMinusDM - prevMinusDM/period (+ -DM1 when the bar qualifies)
-func MINUS_DM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
+func MinusDM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inLow) - 1)
@@ -598,15 +598,15 @@ func MINUS_DM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("MINUS_DM", "result", retCode)
+		slog.Debug("MinusDM", "result", retCode)
 		return nil
 	}
 
 	return outReal
 }
 
-// PLUS_DI - Plus Directional Indicator: the Wilder-smoothed positive directional movement expressed as a percentage of the true range.
-// Measures the strength of upward price movement. Rising +DI signals strengthening upward direction; compared against MINUS_DI to judge trend direction.
+// PlusDI - Plus Directional Indicator: the Wilder-smoothed positive directional movement expressed as a percentage of the true range.
+// Measures the strength of upward price movement. Rising +DI signals strengthening upward direction; compared against MinusDI to judge trend direction.
 //
 // +DM1 = (H-Hprev) if (H-Hprev) > 0 and (H-Hprev) > (Lprev-L), else 0.
 // TR1 = true range = max(H-L, |H-Cprev|, |L-Cprev|).
@@ -615,7 +615,7 @@ func MINUS_DM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 // When period <= 1: +DI = +DM1 / TR1 (no *100).
 //
 // Note: Wilder's original integer rounding of intermediate values is not applied (it was unreliable when values are near 1).
-func PLUS_DI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
+func PlusDI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inClose) - 1)
@@ -635,21 +635,21 @@ func PLUS_DI(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("PLUS_DI", "result", retCode)
+		slog.Debug("PlusDI", "result", retCode)
 		return nil
 	}
 
 	return outReal
 }
 
-// PLUS_DM - Plus Directional Movement: the Wilder-smoothed accumulation of upward directional movement (+DM1).
-// A component of the Directional Movement System used to build +DI/DX/ADX.
+// PlusDM - Plus Directional Movement: the Wilder-smoothed accumulation of upward directional movement (+DM1).
+// A component of the Directional Movement System used to build PlusDI/DX/ADX.
 //
 // +DM1 = (high - prevHigh) if (high-prevHigh) > 0 and > (prevLow-low), else 0.
 // period<=1: output = +DM1 per bar.
 // period>1: seed = sum of first (period-1) +DM1; then Wilder smoothing:
 // +DM = prevPlusDM - prevPlusDM/period + +DM1(today)
-func PLUS_DM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
+func PlusDM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inLow) - 1)
@@ -668,7 +668,7 @@ func PLUS_DM(inHigh, inLow []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("PLUS_DM", "result", retCode)
+		slog.Debug("PlusDM", "result", retCode)
 		return nil
 	}
 
@@ -857,7 +857,7 @@ func RSI(inReal []float64, optInTimePeriod int) []float64 {
 	return outReal
 }
 
-// STOCH - Slow Stochastic oscillator: locates the close within the high-low range over a lookback period, then double-smooths it.
+// Stoch - Slow Stochastic oscillator: locates the close within the high-low range over a lookback period, then double-smooths it.
 // Returns the Slow-%K and Slow-%D lines. SlowK/SlowD > 80 overbought, < 20 oversold; %K crossing %D signals momentum shifts.
 //
 // FastK = 100*(Close - LL_n)/(HH_n - LL_n), n = FastK_Period (LL/HH = lowest low / highest high over n)
@@ -865,7 +865,7 @@ func RSI(inReal []float64, optInTimePeriod int) []float64 {
 // SlowD = MA(SlowK, SlowD_Period, SlowD_MAType)
 //
 // Note: When the high-low range over the window is zero, the raw stochastic is set to 0 instead of being undefined.
-func STOCH(
+func Stoch(
 	inHigh, inLow, inClose []float64,
 	optInFastKPeriod int,
 	optInSlowKPeriod int,
@@ -898,21 +898,21 @@ func STOCH(
 		outSlowK,
 		outSlowD,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("STOCH", "result", retCode)
+		slog.Debug("Stoch", "result", retCode)
 		return nil, nil
 	}
 
 	return outSlowK, outSlowD
 }
 
-// STOCHF - Fast Stochastic Oscillator: the raw %K line and its moving-average-smoothed %D line.
-// Unlike STOCH (which slows both lines), STOCHF returns the unsmoothed FastK and FastD. Oscillates 0-100; >80 overbought, <20 oversold.
+// StochF - Fast Stochastic Oscillator: the raw %K line and its moving-average-smoothed %D line.
+// Unlike Stoch (which slows both lines), StochF returns the unsmoothed FastK and FastD. Oscillates 0-100; >80 overbought, <20 oversold.
 //
 // FastK = 100 * (Close - LowestLow) / (HighestHigh - LowestLow), over the last FastK_Period bars (incl. today)
 // FastD = MA(FastK, FastD_Period, FastD_MAType)
 //
 // Note: When the high-low range over the window is zero, %K is set to 0 instead of being undefined.
-func STOCHF(
+func StochF(
 	inHigh, inLow, inClose []float64,
 	optInFastKPeriod int,
 	optInFastDPeriod int,
@@ -941,14 +941,14 @@ func STOCHF(
 		outFastK,
 		outFastD,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("STOCHF", "result", retCode)
+		slog.Debug("StochF", "result", retCode)
 		return nil, nil
 	}
 
 	return outFastK, outFastD
 }
 
-// STOCHRSI - Applies the Fast Stochastic (STOCHF) oscillator to an RSI series instead of price,
+// StochRSI - Applies the Fast Stochastic (StochF) oscillator to an RSI series instead of price,
 // measuring where RSI sits within its recent min/max range.
 // Oscillates 0-100; high = RSI near its recent top, low = near its recent bottom.
 //
@@ -958,7 +958,7 @@ func STOCHF(
 //
 // Note: To reproduce the original article's unsmoothed Stochastic RSI, set the RSI period equal to the %K period and read the raw %K output.
 // When the RSI's recent range is zero, %K is set to 0 instead of being undefined.
-func STOCHRSI(
+func StochRSI(
 	inReal []float64,
 	optInTimePeriod int,
 	optInFastKPeriod int,
@@ -987,21 +987,24 @@ func STOCHRSI(
 		outFastK,
 		outFastD,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("STOCHRSI", "result", retCode)
+		slog.Debug("StochRSI", "result", retCode)
 		return nil, nil
 	}
 
 	return outFastK, outFastD
 }
 
-// TRIX - 1-day Rate-Of-Change of a triple-smoothed EMA of the input.
+// Trix - 1-day Rate-Of-Change of a triple-smoothed EMA of the input.
 // Momentum oscillator that filters out price moves shorter than the chosen period.
 // Oscillates around zero; sign, zero-crossings and slope signal momentum direction.
 //
-// E1 = EMA(inReal, n); E2 = EMA(E1, n); E3 = EMA(E2, n); TRIX = ROC_1(E3) = 100 * (E3_today/E3_yesterday - 1)
+// E1 = EMA(inReal, n);
+// E2 = EMA(E1, n);
+// E3 = EMA(E2, n);
+// Trix = ROC_1(E3) = 100 * (E3_today/E3_yesterday - 1)
 //
 // Note: The final rate-of-change step yields 0 when the previous smoothed value is exactly zero, rather than being undefined.
-func TRIX(inReal []float64, optInTimePeriod int) []float64 {
+func Trix(inReal []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inReal) - 1)
@@ -1019,23 +1022,23 @@ func TRIX(inReal []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("TRIX", "result", retCode)
+		slog.Debug("Trix", "result", retCode)
 		return nil
 	}
 
 	return outReal
 }
 
-// ULTOSC - Ultimate Oscillator: momentum indicator combining buying-pressure/true-range ratios over three time periods into one 0-100 weighted average.
+// UltOsc - Ultimate Oscillator: momentum indicator combining buying-pressure/true-range ratios over three time periods into one 0-100 weighted average.
 // Blends short-, medium-, and long-term momentum to damp single-period noise. Ranges 0-100; conventionally >70 overbought, <30 oversold.
 //
 // trueLow = min(low, prevClose); BP = close - trueLow
 // TR = max(high-low, |prevClose-high|, |prevClose-low|)
 // avg_n = (sum BP over n bars) / (sum TR over n bars)
-// ULTOSC = 100 * (4avg_short + 2avg_mid + avg_long) / 7
+// UltOsc = 100 * (4avg_short + 2avg_mid + avg_long) / 7
 //
 // Note: The three periods are sorted internally, so the 4/2/1 weighting always applies to the shortest, middle, and longest period regardless of the order in which you pass them.
-func ULTOSC(
+func UltOsc(
 	inHigh, inLow, inClose []float64,
 	optInTimePeriod1, optInTimePeriod2, optInTimePeriod3 int,
 ) []float64 {
@@ -1060,19 +1063,19 @@ func ULTOSC(
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("ULTOSC", "result", retCode)
+		slog.Debug("UltOsc", "result", retCode)
 		return nil
 	}
 
 	return outReal
 }
 
-// WILLR - Williams' %R momentum oscillator over a rolling period, bounded in [-100, 0].
+// WillR - Williams' %R momentum oscillator over a rolling period, bounded in [-100, 0].
 // Measures where the current close sits relative to the high-low range of the last N bars.
 // Near 0 = close at period high (overbought); near -100 = close at period low (oversold).
 //
 // %R = -100 * (highestHigh - close) / (highestHigh - lowestLow) over the trailing optInTimePeriod bars; if highestHigh == lowestLow, output 0.
-func WILLR(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
+func WillR(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 	var (
 		startIdx     int32
 		endIdx       = int32(len(inClose) - 1)
@@ -1092,7 +1095,7 @@ func WILLR(inHigh, inLow, inClose []float64, optInTimePeriod int) []float64 {
 		&outNBElement,
 		outReal,
 	); SUCCESS != taResult(retCode) {
-		slog.Debug("WILLR", "result", retCode)
+		slog.Debug("WillR", "result", retCode)
 		return nil
 	}
 

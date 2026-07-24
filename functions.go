@@ -670,4 +670,72 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	accbands func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outUpperBand []float64,
+		outMiddleBand []float64,
+		outLowerBand []float64,
+	) int32
+
+	bbands func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		optInNbDevUp float64,
+		optInNbDevDn float64,
+		optInMAType int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outUpperBand []float64,
+		outMiddleBand []float64,
+		outLowerBand []float64,
+	) int32
+
+	dema func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	ema func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	ht_trendline func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	kama func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )

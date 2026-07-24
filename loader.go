@@ -95,6 +95,13 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&ultosc, ptr, "TA_ULTOSC")
 	purego.RegisterLibFunc(&willr, ptr, "TA_WILLR")
 
+	purego.RegisterLibFunc(&accbands, ptr, "TA_ACCBANDS")
+	purego.RegisterLibFunc(&bbands, ptr, "TA_BBANDS")
+	purego.RegisterLibFunc(&dema, ptr, "TA_DEMA")
+	purego.RegisterLibFunc(&ema, ptr, "TA_EMA")
+	purego.RegisterLibFunc(&ht_trendline, ptr, "TA_HT_TRENDLINE")
+	purego.RegisterLibFunc(&kama, ptr, "TA_KAMA")
+
 	return ptr, nil
 }
 
