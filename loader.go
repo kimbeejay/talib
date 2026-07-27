@@ -114,6 +114,12 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&trima, ptr, "TA_TRIMA")
 	purego.RegisterLibFunc(&wma, ptr, "TA_WMA")
 
+	purego.RegisterLibFunc(&avgdev, ptr, "TA_AVGDEV")
+	purego.RegisterLibFunc(&avgprice, ptr, "TA_AVGPRICE")
+	purego.RegisterLibFunc(&medprice, ptr, "TA_MEDPRICE")
+	purego.RegisterLibFunc(&typprice, ptr, "TA_TYPPRICE")
+	purego.RegisterLibFunc(&wclprice, ptr, "TA_WCLPRICE")
+
 	return ptr, nil
 }
 

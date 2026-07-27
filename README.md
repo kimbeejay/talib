@@ -33,6 +33,12 @@ This project currently exposes a focused subset of TA-Lib functions:
 **Overlap Studies**
 - `AccBands`, `BBands`, `DEMA`, `EMA`, `HT_TRENDLINE`, `KAMA`, `MA`, `MAMA`, `MAVP`, `MidPoint`, `MidPrice`, `SAR`, `SARExt`, `SMA`, `T3`, `TEMA`, `TRIMA`, `WMA`
 
+**Price Transforms**
+- `AvgPrice`, `MedPrice`, `TypPrice`, `WCLPrice`
+
+**Statistic Functions**
+- `AvgDev`
+
 ## Requirements
 
 - Go `1.26`

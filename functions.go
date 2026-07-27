@@ -876,4 +876,58 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	avgdev func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	avgprice func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	medprice func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	typprice func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	wclprice func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )
