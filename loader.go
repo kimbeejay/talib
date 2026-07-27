@@ -120,6 +120,16 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&typprice, ptr, "TA_TYPPRICE")
 	purego.RegisterLibFunc(&wclprice, ptr, "TA_WCLPRICE")
 
+	purego.RegisterLibFunc(&beta, ptr, "TA_BETA")
+	purego.RegisterLibFunc(&correl, ptr, "TA_CORREL")
+	purego.RegisterLibFunc(&linearreg, ptr, "TA_LINEARREG")
+	purego.RegisterLibFunc(&linearreg_angle, ptr, "TA_LINEARREG_ANGLE")
+	purego.RegisterLibFunc(&linearreg_intercept, ptr, "TA_LINEARREG_INTERCEPT")
+	purego.RegisterLibFunc(&linearreg_slope, ptr, "TA_LINEARREG_SLOPE")
+	purego.RegisterLibFunc(&stddev, ptr, "TA_STDDEV")
+	purego.RegisterLibFunc(&tsf, ptr, "TA_TSF")
+	purego.RegisterLibFunc(&variance, ptr, "TA_VAR")
+
 	return ptr, nil
 }
 

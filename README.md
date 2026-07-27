@@ -37,7 +37,7 @@ This project currently exposes a focused subset of TA-Lib functions:
 - `AvgPrice`, `MedPrice`, `TypPrice`, `WCLPrice`
 
 **Statistic Functions**
-- `AvgDev`
+- `AvgDev`, `Beta`, `Correl`, `LinearReg`, `LinearRegAngle`, `LinearRegIntercept`, `LinearRegSlope`, `StdDev`, `TSF`, `Var`
 
 ## Requirements
 

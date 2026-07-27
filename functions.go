@@ -930,4 +930,98 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	beta func(
+		startIdx int32,
+		endIdx int32,
+		inReal0 []float64,
+		inReal1 []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	correl func(
+		startIdx int32,
+		endIdx int32,
+		inReal0 []float64,
+		inReal1 []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	linearreg func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	linearreg_angle func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	linearreg_intercept func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	linearreg_slope func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	stddev func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		optInNbDev float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	tsf func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	variance func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		optInNbDev float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )
