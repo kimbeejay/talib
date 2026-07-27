@@ -101,6 +101,18 @@ func Load() (uintptr, error) {
 	purego.RegisterLibFunc(&ema, ptr, "TA_EMA")
 	purego.RegisterLibFunc(&ht_trendline, ptr, "TA_HT_TRENDLINE")
 	purego.RegisterLibFunc(&kama, ptr, "TA_KAMA")
+	purego.RegisterLibFunc(&ma, ptr, "TA_MA")
+	purego.RegisterLibFunc(&mama, ptr, "TA_MAMA")
+	purego.RegisterLibFunc(&mavp, ptr, "TA_MAVP")
+	purego.RegisterLibFunc(&midpoint, ptr, "TA_MIDPOINT")
+	purego.RegisterLibFunc(&midprice, ptr, "TA_MIDPRICE")
+	purego.RegisterLibFunc(&sar, ptr, "TA_SAR")
+	purego.RegisterLibFunc(&sarext, ptr, "TA_SAREXT")
+	purego.RegisterLibFunc(&sma, ptr, "TA_SMA")
+	purego.RegisterLibFunc(&t3, ptr, "TA_T3")
+	purego.RegisterLibFunc(&tema, ptr, "TA_TEMA")
+	purego.RegisterLibFunc(&trima, ptr, "TA_TRIMA")
+	purego.RegisterLibFunc(&wma, ptr, "TA_WMA")
 
 	return ptr, nil
 }

@@ -738,4 +738,142 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	ma func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		optInMAType int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	mama func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInFastLimit float64,
+		optInSlowLimit float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outMAMA []float64,
+		outFAMA []float64,
+	) int32
+
+	mavp func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		inPeriods []float64,
+		optInMinPeriod int32,
+		optInMaxPeriod int32,
+		optInMAType int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	midpoint func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	midprice func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sar func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		optInAcceleration float64,
+		optInMaximum float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sarext func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		optInStartValue float64,
+		optInOffsetOnReverse float64,
+		optInAccelerationInitLong float64,
+		optInAccelerationLong float64,
+		optInAccelerationMaxLong float64,
+		optInAccelerationInitShort float64,
+		optInAccelerationShort float64,
+		optInAccelerationMaxShort float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	sma func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	t3 func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		optInVFactor float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	tema func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	trima func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	wma func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )

@@ -31,7 +31,7 @@ This project currently exposes a focused subset of TA-Lib functions:
 - Stochastic family: `Stoch`, `StochF`, `StochRSI`
 
 **Overlap Studies**
-- `AccBands`, `BBands`, `DEMA`, `EMA`, `HT_TRENDLINE`, `KAMA`
+- `AccBands`, `BBands`, `DEMA`, `EMA`, `HT_TRENDLINE`, `KAMA`, `MA`, `MAMA`, `MAVP`, `MidPoint`, `MidPrice`, `SAR`, `SARExt`, `SMA`, `T3`, `TEMA`, `TRIMA`, `WMA`
 
 ## Requirements
 
