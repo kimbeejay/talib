@@ -48,7 +48,7 @@ This package does **not** bundle TA-Lib itself. You must install the native libr
 
 ## How library loading works
 
-Call `talib.Load()` once before using any indicator function. The loader looks for the platform-specific library name:
+Call `talib.Load()` once before using any indicator function. After loading, you can call `talib.Version()` to read the native TA-Lib version string. The loader looks for the platform-specific library name:
 
 - macOS: `libta-lib.dylib`
 - Linux: `libta-lib.so`
@@ -103,6 +103,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println("TA-Lib version:", talib.Version())
+
 	var series []float64
 	for i := 0; i < 100; i++ {
         series = append(series, math.Sin(float64(i)/7)*4.5+math.Cos(float64(i)/19)*1.75)
@@ -122,6 +124,7 @@ func main() {
 ## API notes
 
 - Indicator functions return `nil` when the underlying TA-Lib call fails.
+- `Version()` returns the TA-Lib version string exposed by `TA_GetVersionString` (call after `Load()`).
 - Native TA-Lib functions are exposed with Go-style exported names such as `Add`, `Div`, `Max`, and `Sum`.
 - Functions accepting a moving-average type use the `MAType` constant (`MA_SMA`, `MA_EMA`, `MA_WMA`, `MA_DEMA`, `MA_TEMA`, `MA_TRIMA`, `MA_KAMA`, `MA_MAMA`, `MA_T3`).
 - Functions returning multiple outputs (e.g. `Aroon`, `MACD`, `Stoch`) return multiple slices; all are `nil` on failure.

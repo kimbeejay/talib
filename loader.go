@@ -1,16 +1,40 @@
 package talib
 
+import "C"
 import (
 	"fmt"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"runtime"
+	"sync"
 
 	"github.com/ebitengine/purego"
 )
 
+var (
+	internalVersion func() string
+	once            sync.Once
+)
+
+func Version() string {
+	return internalVersion()
+}
+
 func Load() (uintptr, error) {
+	var (
+		ptr uintptr
+		err error
+	)
+
+	once.Do(func() {
+		ptr, err = internalLoad()
+	})
+
+	return ptr, err
+}
+
+func internalLoad() (uintptr, error) {
 	var (
 		path string
 		ptr  uintptr
@@ -25,6 +49,8 @@ func Load() (uintptr, error) {
 	if ptr, err = purego.Dlopen(path, purego.RTLD_NOW|purego.RTLD_GLOBAL); err != nil {
 		return 0, err
 	}
+
+	purego.RegisterLibFunc(&internalVersion, ptr, "TA_GetVersionString")
 
 	// Register the functions we need from the TA-Lib library
 	purego.RegisterLibFunc(&ht_dcperiod, ptr, "TA_HT_DCPERIOD")
