@@ -25,7 +25,7 @@ This project currently exposes a focused subset of TA-Lib functions:
 
 **Momentum Indicators**
 - Directional Movement: `ADX`, `ADXR`, `DX`, `MinusDI`, `MinusDM`, `PlusDI`, `PlusDM`
-- Oscillators: `APO`, `Aroon`, `AroonOsc`, `BOP`, `CCI`, `CMO`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `Trix`, `WillR`, `UltOsc`
+- Oscillators: `APO`, `Aroon`, `AroonOsc`, `BOP`, `CCI`, `CMO`, `CMOU`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `Trix`, `WillR`, `UltOsc`
 - Rate of Change: `ROC`, `ROCP`, `ROCR`, `ROCR100`
 - MACD family: `MACD`, `MACDExt`, `MACDFix`
 - Stochastic family: `Stoch`, `StochF`, `StochRSI`
@@ -44,6 +44,13 @@ This project currently exposes a focused subset of TA-Lib functions:
 
 **Volume Indicators**
 - `AD`, `ADOsc`, `CMF`, `NVI`, `OBV`, `PVI`, `PVO`
+
+**Pattern Recognition**
+- `Cdl2Crows`, `Cdl3BlackCrows`, `Cdl3Inside`, `Cdl3LineStrike`, `Cdl3Outside`, `Cdl3StarsInSouth`, `Cdl3WhiteSoldiers`
+- `CdlAbandonedBaby`, `CdlAdvanceBlock`, `CdlBeltHold`, `CdlBreakaway`, `CdlClosingMarubozu`, `CdlConcealBabysWall`, `CdlCounterAttack`
+- `CdlDarkCloudCover`, `CdlDoji`, `CdlDojiStar`, `CdlDragonflyDoji`, `CdlEngulfing`, `CdlEveningDojiStar`, `CdlEveningStar`
+- `CdlGapSideBySideWhite`, `CdlGravestoneDoji`, `CdlHammer`, `CdlHangingMan`, `CdlHarami`, `CdlHaramiCross`, `CdlHighWave`
+- `CdlHikkake`, `CdlHikkakeMod`, `CdlHomingPigeon`, `CdlIdentical3Crows`, `CdlInNeck`, `CdlInvertedHammer`, `CdlKicking`, `CdlKickingByLength`
 
 ## Requirements
 
@@ -134,6 +141,7 @@ func main() {
 - Native TA-Lib functions are exposed with Go-style exported names such as `Add`, `Div`, `Max`, and `Sum`.
 - Functions accepting a moving-average type use the `MAType` constant (`MA_SMA`, `MA_EMA`, `MA_WMA`, `MA_DEMA`, `MA_TEMA`, `MA_TRIMA`, `MA_KAMA`, `MA_MAMA`, `MA_T3`).
 - Functions returning multiple outputs (e.g. `Aroon`, `MACD`, `Stoch`) return multiple slices; all are `nil` on failure.
+- Pattern-recognition functions (`Cdl*`) return `[]int32` signals; typical values are `-100` (bearish), `0` (no pattern), and `100` (bullish).
 
 ## Project status
 

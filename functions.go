@@ -392,6 +392,16 @@ var (
 		outReal []float64,
 	) int32
 
+	cmou func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
 	dx func(
 		startIdx int32,
 		endIdx int32,
@@ -1139,5 +1149,441 @@ var (
 		outBegIdx *int32,
 		outNBElement *int32,
 		outReal []float64,
+	) int32
+
+	cdl2crows func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3blackcrows func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3inside func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3linestrike func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3outside func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3starsinsouth func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdl3whitesoldiers func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlabandonedbaby func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inPenetration float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdladvanceblock func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlbelthold func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlbreakaway func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlclosingmarubozu func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlconcealbabyswall func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlcounterattack func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdldarkcloudcover func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inPenetration float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdldoji func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdldojistar func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdldragonflydoji func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlengulfing func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdleveningdojistar func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inPenetration float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdleveningstar func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inPenetration float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlgapsidesidewhite func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlgravestonedoji func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhammer func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhangingman func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlharami func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlharamicross func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhighwave func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhikkake func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhikkakemod func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlhomingpigeon func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlidentical3crows func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlinneck func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlinvertedhammer func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlkicking func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
+	) int32
+
+	cdlkickingbylength func(
+		startIdx int32,
+		endIdx int32,
+		inOpen []float64,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []int32,
 	) int32
 )

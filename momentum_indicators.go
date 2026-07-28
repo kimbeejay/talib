@@ -276,6 +276,48 @@ func CMO(inReal []float64, optInTimePeriod int) []float64 {
 	return outReal
 }
 
+// CMOU - Chande Momentum Oscillator: Tushar Chande's original momentum oscillator,
+// computed from plain moving-window sums of the up-moves and down-moves over the period.
+// Bounded in [-100,+100]; positive = net upward momentum, negative = net downward.
+//
+// CMOU is the version as defined by Chande in his book The New Technical Trader (1994),
+// and is the more common implementation used by TradingView (ta.cmo), QuantConnect and pandas-ta's default.
+// See talib.CMO for a smoothed variant of talib.CMOU.
+//
+// d = P[t]-P[t-1];
+// over the trailing optInTimePeriod changes accumulate Su = sum of the positive d,
+// Sd = sum of -d for negative d.
+//
+// CMOU = 100 * (Su-Sd)/(Su+Sd); 0 when Su+Sd == 0 (an exactly flat window).
+// Unlike talib.CMO, the sums are the plain period totals (a moving-window sum), not Wilder-smoothed averages,
+// so there is no unstable period.
+//
+// since TA-Lib 0.8.1
+func CMOU(inReal []float64, optInTimePeriod int) []float64 {
+	var (
+		startIdx     int32
+		endIdx       = int32(len(inReal) - 1)
+		outBegIdx    int32
+		outNBElement int32
+		outReal      = make([]float64, len(inReal))
+	)
+
+	if retCode := cmou(
+		startIdx,
+		endIdx,
+		inReal,
+		int32(optInTimePeriod),
+		&outBegIdx,
+		&outNBElement,
+		outReal,
+	); SUCCESS != taResult(retCode) {
+		slog.Debug("CMOU", "result", retCode)
+		return nil
+	}
+
+	return outReal
+}
+
 // DX - Wilder's Directional Movement Index: the normalized spread between +DI and -DI.
 // Measures the strength of directional (trending) movement, irrespective of direction.
 // Higher DX = stronger trend (either direction); low DX = ranging market.
