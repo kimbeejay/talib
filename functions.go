@@ -1024,4 +1024,120 @@ var (
 		outNBElement *int32,
 		outReal []float64,
 	) int32
+
+	atr func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	natr func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	trange func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	ad func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inVolume []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	adosc func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inVolume []float64,
+		optInFastPeriod int32,
+		optInSlowPeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	cmf func(
+		startIdx int32,
+		endIdx int32,
+		inHigh []float64,
+		inLow []float64,
+		inClose []float64,
+		inVolume []float64,
+		optInTimePeriod int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	nvi func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		inVolume []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	obv func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		inVolume []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	pvi func(
+		startIdx int32,
+		endIdx int32,
+		inReal []float64,
+		inVolume []float64,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
+
+	pvo func(
+		startIdx int32,
+		endIdx int32,
+		inVolume []float64,
+		optInFastPeriod int32,
+		optInSlowPeriod int32,
+		optInMAType int32,
+		outBegIdx *int32,
+		outNBElement *int32,
+		outReal []float64,
+	) int32
 )

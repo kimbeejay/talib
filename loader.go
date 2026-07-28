@@ -156,6 +156,18 @@ func internalLoad() (uintptr, error) {
 	purego.RegisterLibFunc(&tsf, ptr, "TA_TSF")
 	purego.RegisterLibFunc(&variance, ptr, "TA_VAR")
 
+	purego.RegisterLibFunc(&atr, ptr, "TA_ATR")
+	purego.RegisterLibFunc(&natr, ptr, "TA_NATR")
+	purego.RegisterLibFunc(&trange, ptr, "TA_TRANGE")
+
+	purego.RegisterLibFunc(&ad, ptr, "TA_AD")
+	purego.RegisterLibFunc(&adosc, ptr, "TA_ADOSC")
+	purego.RegisterLibFunc(&cmf, ptr, "TA_CMF")
+	purego.RegisterLibFunc(&nvi, ptr, "TA_NVI")
+	purego.RegisterLibFunc(&obv, ptr, "TA_OBV")
+	purego.RegisterLibFunc(&pvi, ptr, "TA_PVI")
+	purego.RegisterLibFunc(&pvo, ptr, "TA_PVO")
+
 	return ptr, nil
 }
 
