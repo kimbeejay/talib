@@ -39,6 +39,12 @@ This project currently exposes a focused subset of TA-Lib functions:
 **Statistic Functions**
 - `AvgDev`, `Beta`, `Correl`, `LinearReg`, `LinearRegAngle`, `LinearRegIntercept`, `LinearRegSlope`, `StdDev`, `TSF`, `Var`
 
+**Volatility Indicators**
+- `ATR`, `NATR`, `TRANGE`
+
+**Volume Indicators**
+- `AD`, `ADOsc`, `CMF`, `NVI`, `OBV`, `PVI`, `PVO`
+
 ## Requirements
 
 - Go `1.26`
