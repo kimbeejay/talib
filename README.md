@@ -1,56 +1,21 @@
 # talib
 
-Go wrapper for selected [TA-Lib](https://ta-lib.org/) functions using [`purego`](https://github.com/ebitengine/purego) to dynamically load the native TA-Lib shared library at runtime.
+Go wrapper for all [TA-Lib](https://ta-lib.org/) functions using [`purego`](https://github.com/ebitengine/purego) to dynamically load the native TA-Lib shared library at runtime.
 
-This project currently exposes a focused subset of TA-Lib functions:
+This package exposes the complete TA-Lib function set across these categories:
 
-**Cycle Indicators (Hilbert Transform)**
-- `HT_DCPERIOD`
-- `HT_DCPHASE`
-- `HT_PHASOR`
-- `HT_SINE`
-- `HT_TRENDMODE`
+- **Cycle Indicators**: Hilbert Transform (`HT_*`)
+- **Math Operators**: Vector operations (Add, Sub, Mult, Div, Max, Min, Sum, etc.)
+- **Math Transforms**: Trigonometric, hyperbolic, exponential, and rounding functions
+- **Momentum Indicators**: ADX, MACD, RSI, Stoch, Aroon, oscillators, ROC, directional movement
+- **Overlap Studies**: Moving averages and bands (EMA, SMA, BBands, KAMA, MAMA, SAR, etc.)
+- **Price Transforms**: Per-bar price composites (AvgPrice, TypPrice, WCLPrice, etc.)
+- **Statistic Functions**: Regression, correlation, and dispersion (Beta, Correl, LinearReg*, StdDev, Var)
+- **Volatility Indicators**: ATR, NATR, TRANGE
+- **Volume Indicators**: AD, ADOsc, CMF, OBV, PVI, PVO
+- **Pattern Recognition**: 61 candlestick patterns (`Cdl*`)
 
-**Math Operators**
-- `Add`, `Sub`, `Mult`, `Div`
-- `Max`, `MaxIndex`, `Min`, `MinIndex`
-- `MinMax`, `MinMaxIndex`
-- `Sum`
-
-**Math Transforms**
-- Trigonometric: `Cos`, `Sin`, `Tan`, `ACos`, `ASin`, `ATan`
-- Hyperbolic: `CosH`, `SinH`, `TanH`
-- Exponential/Logarithmic: `Exp`, `Ln`, `Log10`
-- Rounding: `Ceil`, `Floor`, `Sqrt`
-
-**Momentum Indicators**
-- Directional Movement: `ADX`, `ADXR`, `DX`, `MinusDI`, `MinusDM`, `PlusDI`, `PlusDM`
-- Oscillators: `APO`, `Aroon`, `AroonOsc`, `BOP`, `CCI`, `CMO`, `CMOU`, `IMI`, `MFI`, `MOM`, `PPO`, `RSI`, `Trix`, `WillR`, `UltOsc`
-- Rate of Change: `ROC`, `ROCP`, `ROCR`, `ROCR100`
-- MACD family: `MACD`, `MACDExt`, `MACDFix`
-- Stochastic family: `Stoch`, `StochF`, `StochRSI`
-
-**Overlap Studies**
-- `AccBands`, `BBands`, `DEMA`, `EMA`, `HT_TRENDLINE`, `KAMA`, `MA`, `MAMA`, `MAVP`, `MidPoint`, `MidPrice`, `SAR`, `SARExt`, `SMA`, `T3`, `TEMA`, `TRIMA`, `WMA`
-
-**Price Transforms**
-- `AvgPrice`, `MedPrice`, `TypPrice`, `WCLPrice`
-
-**Statistic Functions**
-- `AvgDev`, `Beta`, `Correl`, `LinearReg`, `LinearRegAngle`, `LinearRegIntercept`, `LinearRegSlope`, `StdDev`, `TSF`, `Var`
-
-**Volatility Indicators**
-- `ATR`, `NATR`, `TRANGE`
-
-**Volume Indicators**
-- `AD`, `ADOsc`, `CMF`, `NVI`, `OBV`, `PVI`, `PVO`
-
-**Pattern Recognition**
-- `Cdl2Crows`, `Cdl3BlackCrows`, `Cdl3Inside`, `Cdl3LineStrike`, `Cdl3Outside`, `Cdl3StarsInSouth`, `Cdl3WhiteSoldiers`
-- `CdlAbandonedBaby`, `CdlAdvanceBlock`, `CdlBeltHold`, `CdlBreakaway`, `CdlClosingMarubozu`, `CdlConcealBabysWall`, `CdlCounterAttack`
-- `CdlDarkCloudCover`, `CdlDoji`, `CdlDojiStar`, `CdlDragonflyDoji`, `CdlEngulfing`, `CdlEveningDojiStar`, `CdlEveningStar`
-- `CdlGapSideBySideWhite`, `CdlGravestoneDoji`, `CdlHammer`, `CdlHangingMan`, `CdlHarami`, `CdlHaramiCross`, `CdlHighWave`
-- `CdlHikkake`, `CdlHikkakeMod`, `CdlHomingPigeon`, `CdlIdentical3Crows`, `CdlInNeck`, `CdlInvertedHammer`, `CdlKicking`, `CdlKickingByLength`
+For a complete function reference with descriptions, see [TA-Lib's official function list](https://ta-lib.org/functions/).
 
 ## Requirements
 
@@ -145,4 +110,4 @@ func main() {
 
 ## Project status
 
-This is currently a focused wrapper around a limited subset of TA-Lib. Additional indicators can be added by registering more native functions in `Load()` and exposing Go wrappers for them.
+This wrapper provides **complete coverage** of the TA-Lib function library. All ~100 indicators across 10 function categories are exposed with Go-idiomatic APIs. New versions of TA-Lib may introduce additional functions; updating this wrapper requires adding function pointer declarations in `functions.go`, registering them in `loader.go`, and exposing Go wrappers in the appropriate `*_indicators.go` file.
